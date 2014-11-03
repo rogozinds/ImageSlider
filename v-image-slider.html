@@ -8,10 +8,41 @@
    <body>
     <polymer-element name="v-image-slider" noscript>
       <template>
-        <h1>Hello world</h1>
+          <div id="slider">
+            <ul>
+              <li><img src="images/01.svg"></img> </li>
+              <li><img src="images/02.svg"></img></li>
+            </ul>
+          </div>
         <style>
-        h1 {
+        :host {
+          overflow: hidden;
+          position: relative;
+          width:200px;
           background-color:red;
+        }
+        :host div {
+          overflow: hidden;
+          position: relative;
+          width:200px;
+          height:200px;
+        }
+        :host img{
+          width: 200px;
+          height: 200px;
+        }
+        :host ul {
+          list-style: none;
+          width: 400px;
+          height: 200px;
+          margin: 0;
+          padding: 0;
+        }
+        :host li {
+          display:block;
+          line-height:200px;
+          height: 200px;
+          float: left;
         }
         </style>
       </template>
