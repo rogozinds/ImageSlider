@@ -3,12 +3,14 @@
    <head>
       <meta charset="utf-8"></meta>
       <script src="bower_components/platform/platform.js"> </script>
+      <link rel="import" href="bower_components/core-animation/web-animations.html"></link>
+      <link rel="import" href="bower_components/core-animation/core-animation.html"></link>
       <link rel="import" href="bower_components/polymer/polymer.html"></link>
    </head>
    <body>
-    <polymer-element name="v-image-slider" noscript>
+    <polymer-element name="v-image-slider">
       <template>
-          <div id="slider">
+          <div id="slider" on-click={{scrollRight}} >
             <ul>
               <li><img src="images/01.svg"></img> </li>
               <li><img src="images/02.svg"></img></li>
@@ -37,15 +39,17 @@
           height: 200px;
           margin: 0;
           padding: 0;
+
         }
         :host li {
+          position: relative;
           display:block;
           line-height:200px;
           height: 200px;
-          float: left;
-        }
+          float: left;        }
         </style>
       </template>
+      <script src="v-image-slider.js"> </script>
     </polymer-element>
 
   </body>
