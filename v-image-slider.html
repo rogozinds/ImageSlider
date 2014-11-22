@@ -6,17 +6,22 @@
       <link rel="import" href="bower_components/core-animation/web-animations.html"></link>
       <link rel="import" href="bower_components/core-animation/core-animation.html"></link>
       <link rel="import" href="bower_components/polymer/polymer.html"></link>
+      <link rel="import" href="bower_components/core-icon/core-icon.html"></link>
+      <link rel="import" href="bower_components/core-icons/core-icons.html"></link>
+      <link rel="import" href="bower_components/core-icon-button/core-icon-button.html"></link>
    </head>
    <body>
     <polymer-element name="v-image-slider">
       <template>
-          <div id="slider" on-click={{scrollRight}} >
+          <div id="slider" >
             <ul>
               <li><img src="images/01.svg"></img> </li>
               <li><img src="images/02.svg"></img></li>
               <li><img src="images/03.svg"></img></li>
             </ul>
           </div>
+          <core-icon-button id = "scroll-right-button" on-click={{scrollRight}} icon="arrow-forward"></core-icon-button>
+          <core-icon-button id = "scroll-left-button" on-click={{scrollLeftEvent}} icon="arrow-back"></core-icon-button>
         <style>
         :host {
           overflow: hidden;
