@@ -13,3 +13,12 @@ To setup project:
  serve
 6. Check the result:
  Open browser and type localhost:3000 in addressbar
+
+ :TODO
+ - Optimize image scrolling, right now all images are scrolled - even those which
+ are hidden. For hidden images we can just change left coordinate, without any animation.
+
+ - Add width and height change from template (the same way you can specify images right now)
+ - Add circle scrolling, right now if you reach last image, you can't scroll anymore - can
+ be tricky because all images are in select element. Probably this feature can't be implemented
+  easily in current design.
