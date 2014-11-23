@@ -11,17 +11,18 @@
       <link rel="import" href="bower_components/core-icon-button/core-icon-button.html"></link>
    </head>
    <body>
-    <polymer-element name="v-image-slider">
+    <polymer-element name="v-image-slider" attributes="headers, images">
       <template>
           <div id="slider" >
+            <core-icon-button id = "scroll-right-button" on-click={{scrollRight}} icon="arrow-forward"></core-icon-button>
+            <core-icon-button id = "scroll-left-button" on-click={{scrollLeftEvent}} icon="arrow-back"></core-icon-button>
             <ul>
-              <li><img src="images/01.svg"></img> </li>
-              <li><img src="images/02.svg"></img></li>
-              <li><img src="images/03.svg"></img></li>
+              <template repeat="{{i in images}}">
+                <li><img src={{i.src}}></img> </li>
+              </template>
             </ul>
           </div>
-          <core-icon-button id = "scroll-right-button" on-click={{scrollRight}} icon="arrow-forward"></core-icon-button>
-          <core-icon-button id = "scroll-left-button" on-click={{scrollLeftEvent}} icon="arrow-back"></core-icon-button>
+
         <style>
         :host {
           overflow: hidden;
@@ -29,19 +30,19 @@
           width:200px;
           background-color:red;
         }
-        :host div {
+        :host #slider{
           overflow: hidden;
           position: relative;
           width:200px;
           height:200px;
         }
+
         :host img{
           width: 200px;
           height: 200px;
         }
         :host ul {
           list-style: none;
-          width: 600px;
           height: 200px;
           margin: 0;
           padding: 0;
@@ -52,7 +53,34 @@
           display:block;
           line-height:200px;
           height: 200px;
-          float: left;        }
+          float: left;
+        }
+        :host core-icon-button {
+          position: absolute;
+          z-index: 999;
+          display: block;
+          padding: 4% 3%;
+          width: auto;
+          height: 100%;
+          color: #fff;
+          text-decoration: none;
+          font-weight: 600;
+          font-size: 18px;
+          opacity: 0.4;
+          cursor: pointer;
+        }
+        
+        #scroll-left-button {
+          border-radius: 0 2px 2px 0;
+          -webkit-transition: all 0.2s ease;
+        }
+
+        #scroll-right-button {
+          right: 0;
+          border-radius: 2px 0 0 2px;
+          border-radius: 0 2px 2px 0;
+          -webkit-transition: all 0.2s ease;
+        }
         </style>
       </template>
       <script src="v-image-slider.js"> </script>
