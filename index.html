@@ -1,4 +1,4 @@
-<!--Test page -->
+<!--Simple web-page to show how to use v-image-slider web component. Enjoy! :) -->
 
 <!doctype html>
 <html>
@@ -16,6 +16,9 @@
     <link rel="import" href="v-image-slider.html">
   </head>
   <body>
+    <!-- To use slider specify images as array of json.
+      You can specify the width and height of the images, if width and height
+      are not specified the default 200x200 size will be used. -->
     <v-image-slider
 
         images='[
@@ -25,7 +28,8 @@
           {"src": "images/04.svg"},
           {"src": "images/05.svg"}
         ]'
-
+        width = 300
+        height = 300
         >
     </v-image-slider>
   </body>
