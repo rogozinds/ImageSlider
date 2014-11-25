@@ -1,6 +1,6 @@
-
 Polymer('v-image-slider', {
   currentIndex: 0,
+  elems: null,
   nImages: 0,
   created: function() {
       var DEFAULT_WIDTH=200;
@@ -16,46 +16,33 @@ Polymer('v-image-slider', {
           }
   },
   ready: function() {
+    this.elems= this.shadowRoot.querySelectorAll('li');
     this.nImages=this.shadowRoot.querySelectorAll('li').length;
     var ulElem = this.shadowRoot.querySelectorAll('ul')[0];
     ulElem.style.width=this.width*this.nImages+"px";
   },
   scrollRight: function() {
-    var elems= this.shadowRoot.querySelectorAll('li');
-    if (this.currentIndex < elems.length-1) {
-      var curElem=elems[this.currentIndex];
-      var nextIndex=this.currentIndex+1;
-      var curPos=-this.width*this.currentIndex;
-      var nextPos=-1*(this.width*nextIndex);
-      var animations=[];
-      var animationProps={direction: "alternate",duration: 1000,iterations:1,fill: 'forwards'};
-      var animationTransition=[
-        {left: curPos+'px'}, { left: nextPos+'px'}
-      ];
-      for(i=0;i<elems.length;i++) {
-        animations.push(new Animation(elems[i],animationTransition,animationProps));
-      }
-      var player=document.timeline.play(new AnimationGroup(animations));
-      this.currentIndex++;
-    }
+    this.slideAnimation(this.currentIndex+1);
   },
   scrollLeftEvent: function() {
-    var elems= this.shadowRoot.querySelectorAll('li');
-    if (this.currentIndex > 0) {
-      var curElem=elems[this.currentIndex];
-      var nextIndex=this.currentIndex-1;
-      var curPos=-this.width*this.currentIndex;
-      var nextPos=-1*(this.width*nextIndex);
+    this.slideAnimation(this.currentIndex-1);
+  },
+  //Perform sliding animation of the current image, to the image with index
+  //nextIndex. nextIndex can be any integer
+  slideAnimation: function(nextIndex) {
+    if(nextIndex>=0 && nextIndex<this.nImages) {
       var animations=[];
+      var curPos=-this.width*this.currentIndex;
+      var nextPos=-1*(this.width*(nextIndex));
       var animationProps={direction: "alternate",duration: 1000,iterations:1,fill: 'forwards'};
       var animationTransition=[
         {left: curPos+'px'}, { left: nextPos+'px'}
       ];
-      for(i=0;i<elems.length;i++) {
-        animations.push(new Animation(elems[i],animationTransition,animationProps));
+      for(i=0;i<this.nImages;i++) {
+        animations.push(new Animation(this.elems[i],animationTransition,animationProps));
       }
       var player=document.timeline.play(new AnimationGroup(animations));
-      this.currentIndex--;
+      this.currentIndex=nextIndex;
     }
   }
 });
