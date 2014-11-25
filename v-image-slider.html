@@ -11,7 +11,7 @@
       <link rel="import" href="bower_components/core-icon-button/core-icon-button.html"></link>
    </head>
    <body>
-    <polymer-element name="v-image-slider" attributes="headers, images">
+    <polymer-element name="v-image-slider" attributes="images, width, height">
       <template>
           <div id="slider" >
             <core-icon-button id = "scroll-right-button" on-click={{scrollRight}} icon="arrow-forward"></core-icon-button>
@@ -24,26 +24,20 @@
           </div>
 
         <style>
-        :host {
-          overflow: hidden;
-          position: relative;
-          width:200px;
-          background-color:red;
-        }
         :host #slider{
           overflow: hidden;
           position: relative;
-          width:200px;
-          height:200px;
+          width:{{width+'px'}};
+          height: {{height+'px'}};
         }
 
         :host img{
-          width: 200px;
-          height: 200px;
+          width: {{width+'px'}};
+          height: {{height+'px'}};
         }
         :host ul {
           list-style: none;
-          height: 200px;
+          height: {{height+'px'}};
           margin: 0;
           padding: 0;
 
@@ -51,8 +45,10 @@
         :host li {
           position: relative;
           display:block;
-          line-height:200px;
-          height: 200px;
+          line-height:{{height+'px'}};
+          width: {{width+'px'}};
+          height: width: {{width+'px'}};
+          height: {{height+'px'}};
           float: left;
         }
         :host core-icon-button {
@@ -69,7 +65,7 @@
           opacity: 0.4;
           cursor: pointer;
         }
-        
+
         #scroll-left-button {
           border-radius: 0 2px 2px 0;
           -webkit-transition: all 0.2s ease;
