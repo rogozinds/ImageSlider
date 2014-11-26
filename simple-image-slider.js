@@ -1,4 +1,4 @@
-Polymer('v-image-slider', {
+Polymer('simple-image-slider', {
   currentIndex: 0,
   elems: null,
   nImages: 0,
