@@ -1,18 +1,29 @@
+# Description
+A very simple image slider component done on top of Polymer 0.5.
 
-To setup project:
-0. Install node-js:
+# Initial setup
+
+## Setup node-js
   sudo install node
-1. Install bower:
+
+## Setup bower
   sudo npm install -g bower.
-2. Install node-js webserver:
+
+## Install node-js webserver:
   sudo npm install -g serve
-3. Clone the project.
-4. Add Polymer library. In project directory execute:
-  bower install Polymer/paper-elements
-5. Start webserver. In project dir execute:
+
+## Clone the project.
+  git clone https://github.com/rogozinds/ImageSlider.git
+
+## Install bower dependencies (if there are conflicts user version 0.5.x)
+  bower install
+
+# Run and use
+## Start webserver in project root execute:
  serve
-6. Check the result:
- Open browser and type localhost:3000 in addressbar
+
+## Check the result:
+ Open browser and type localhost:3000 in you browser
 
  :TODO
  - Optimize image scrolling, right now all images are scrolled - even those which
